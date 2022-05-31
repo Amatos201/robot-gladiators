@@ -1,7 +1,5 @@
  HEAD
 window.prompt("What is your robot's name?");
-
-
 // this creates a function named "fight"
 function fight() {
     window.alert("The fight(); has begun!");
@@ -124,12 +122,20 @@ for(var i = 0; i < 3; i++) {
   // start the game when the page loads
 startGame();
 } 
+// if we're not at the last enemy in the array
+if (i < enemyNames.length - 1) {
+  shop();
+}
 }
 var endGame = function() {
   // if player is still alive, player wins!
-  if (playerHealth > 0) {
+  if (playerHealth > 0 && i < enemyNames.length - 1) {
     window.alert("Great job, you've survived the game! You now have a score of " + playerMoney + ".");
+    var storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
+  if (storeConfirm) {
+    shop();
   } 
+}
   else {
     window.alert("You've lost your robot in battle.");
   }
@@ -138,6 +144,10 @@ var playAgainConfirm = window.confirm("Would you like to play again?");
 if (playAgainConfirm) {
   // restart the game
   endGame();
+  var shop = function() {
+    console.log("entered the shop");
+  };
+
 } 
 else {
   window.alert("Thank you for playing Robot Gladiators! Come back soon!");
@@ -146,4 +156,4 @@ else {
 
 
 fight();
->>>>>>> feature/initial-game
+ feature/initial-game
